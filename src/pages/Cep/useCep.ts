@@ -31,10 +31,23 @@ export const useCep = () => {
   });
 
   const handleFetchAddress = useCallback(async (zipCode: string) => {
-    const { data } = await axios.get(
-      `https://viacep.com.br/ws/${zipCode}/json/`
-    );
-    setAddressData(data);
+    try {
+      const { data } = await axios.get(
+        `https://viacep.com.br/ws/${zipCode}/json/`
+      );
+
+      // Verifique se os dados retornados são válidos antes de atualizar o formulário
+      if (data && !data.erro) {
+        setAddressData(data);
+      } else {
+        // Exibir uma mensagem de erro ou feedback para o usuário
+        alert("CEP não encontrado ou inválido.");
+        // Limpar os valores do formulário ou fazer outras ações necessárias
+      }
+    } catch (error) {
+      console.error("Erro ao buscar dados do CEP:", error);
+      // Lidar com o erro, exibir mensagem de erro para o usuário, etc.
+    }
   }, []);
 
   const setAddressData = useCallback((data: AddressProps) => {

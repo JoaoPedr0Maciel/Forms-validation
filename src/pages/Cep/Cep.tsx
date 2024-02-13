@@ -15,7 +15,7 @@ const Cep = () => {
             {...register("address.zipCode")}
             type="text"
             placeholder="CEP"
-            maxLength={9}
+            maxLength={8}
           />
           {errors.address?.zipCode && (
             <div className=" w-[300px] ">
