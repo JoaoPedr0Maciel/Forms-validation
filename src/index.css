@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-[#333];
+}
+
+input {
+  width: 300px;
+  background: #cacaca;
+  height: 2.5rem;
+  padding-left: 1rem;
+  font-weight: bold;
+  border-radius: 1rem;
+  border: none;
+  outline: none;
+}
+
+input::placeholder {
+  color: #747373;
+}
